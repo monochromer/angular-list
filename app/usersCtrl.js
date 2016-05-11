@@ -24,9 +24,9 @@
   };
 
 
-  usersCtrl.$inject = ['$scope', '$sce'];
+  usersCtrl.$inject = ['$scope'];
 
-  function usersCtrl($scope, $sce) {
+  function usersCtrl($scope) {
     $scope.users = [
         {
           "id": "1",
@@ -102,7 +102,7 @@
         }
     ];
 
-    $scope.sortType = '';
+    $scope.sortType = 'name';
     $scope.sortReverse = false;
   };
 

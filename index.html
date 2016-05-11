@@ -16,13 +16,15 @@
             <div class="data-grid__search search">
                 <input class="search__input" type="text" placeholder="Поиск сотрудников" ng-model="search">
             </div>
-            <div class="data-grid__count">Общее количество сотрудников: <b>{{users.length}}</b></div>
+
+            <div class="data-grid__count" ng-cloak>Общее количество сотрудников: <b>{{users.length}}</b></div>
+
             <div class="data-grid__scroll">
                 <table class="data-table">
                     <colgroup>
-                        <col style="width: 60px">
+                        <col style="width: 50px">
+                        <col style="width: 100px">
                         <col style="">
-                        <col style="width: 120px">
                         <col style="">
                         <col style="">
                         <col style="">
@@ -32,12 +34,12 @@
                             <th class="data-table__cell data-table__cell_head">
                                 <div>№</div>
                             </th>
+                            <th class="data-table__cell data-table__cell_head data-table__cell_align_center" >
+                                <div>Фото</div>
+                            </th>
                             <th class="data-table__cell data-table__cell_head" ng-click="sortType = 'name'; sortReverse = !sortReverse">
                                 <div>ФИО</div>
                                 <div class="sort-tool" ng-class="{'sort-tool_active': sortType == 'name', 'sort-tool_up': sortReverse, 'sort-tool_down': !sortReverse}" ng-class="{'sort-tool_up': sortType == 'name'}"></div>
-                            </th>
-                            <th class="data-table__cell data-table__cell_head data-table__cell_align_center" >
-                                <div>Фото</div>
                             </th>
                             <th class="data-table__cell data-table__cell_head" ng-click="sortType = 'room'; sortReverse = !sortReverse">
                                 <div>Комната</div>
@@ -60,28 +62,29 @@
                 </table>
             </div>
         </div>
+
         <!-- END grid__head -->
         <div class="data-grid__body">
             <table class="data-table">
                 <colgroup>
-                    <col style="width: 60px">
+                    <col style="width: 50px">
+                    <col style="width: 100px">
                     <col style="">
-                    <col style="width: 120px">
                     <col style="">
                     <col style="">
                     <col style="">
                 </colgroup>
                 <tbody class="data-table__body">
-                    <tr class="data-table__row" ng-cloak ng-repeat="user in users | orderBy:sortType:sortReverse | filter: search">
+                    <tr class="data-table__row" ng-cloak ng-repeat="user in users | filter: search | orderBy:sortType:sortReverse">
                         <td class="data-table__cell">{{$index + 1}}</td>
-                        <td class="data-table__cell"><span ng-bind-html="user.name | highlight:search"></span></td>
                         <td class="data-table__cell data-table__cell_align_center">
                             <img class="data-grid__img" ng-src="{{user.avatar}}" alt="{{user.name}}" title="{{user.name}}">
                         </td>
-                        <td class="data-table__cell"><span ng-bind-html="user.room | highlight:search"></span></td>
-                        <td class="data-table__cell"><span ng-bind-html="user.phone | highlight:search"></span></td>
-                        <td class="data-table__cell"><span ng-bind-html="user.address | highlight:search"></span></td>
-                        <td class="data-table__cell"><a class="text-link" href="mailto: {{user.email}}" ng-bind-html="user.email | highlight:search"></a></td>
+                        <td class="data-table__cell"><span ng-bind-html="user.name | highlight:search">{{user.name}}</span></td>
+                        <td class="data-table__cell"><span ng-bind-html="user.room | highlight:search">{{user.room}}</span></td>
+                        <td class="data-table__cell"><span ng-bind-html="user.phone | highlight:search">{{user.phone}}</span></td>
+                        <td class="data-table__cell"><span ng-bind-html="user.address | highlight:search">{{user.address}}</span></td>
+                        <td class="data-table__cell"><a class="text-link" href="mailto: {{user.email}}" ng-bind-html="user.email | highlight:search">{{user.email}}</a></td>
                     </tr>
                 </tbody>
             </table>
