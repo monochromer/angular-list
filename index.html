@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Сотрудники компании</title>
+</head>
+<body class="app-page">
+
+<div class="app-view">
+
+    <!--BEGIN data-grid-->
+    <div class="data-grid" ng-controller="usersCtrl">
+        <!-- BEGIN grid__head -->
+        <div class="data-grid__head">
+            <div class="data-grid__search search">
+                <input class="search__input" type="text" placeholder="Поиск сотрудников" ng-model="search">
+            </div>
+            <div class="data-grid__count">Общее количество сотрудников: <b>{{users.length}}</b></div>
+            <div class="data-grid__scroll">
+                <table class="data-table">
+                    <colgroup>
+                        <col style="width: 60px">
+                        <col style="">
+                        <col style="width: 120px">
+                        <col style="">
+                        <col style="">
+                        <col style="">
+                    </colgroup>
+                    <thead class="data-table__head">
+                        <tr class="data-table__row">
+                            <th class="data-table__cell data-table__cell_head">
+                                <div>№</div>
+                            </th>
+                            <th class="data-table__cell data-table__cell_head" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                                <div>ФИО</div>
+                                <div class="sort-tool" ng-class="{'sort-tool_active': sortType == 'name', 'sort-tool_up': sortReverse, 'sort-tool_down': !sortReverse}" ng-class="{'sort-tool_up': sortType == 'name'}"></div>
+                            </th>
+                            <th class="data-table__cell data-table__cell_head data-table__cell_align_center" >
+                                <div>Фото</div>
+                            </th>
+                            <th class="data-table__cell data-table__cell_head" ng-click="sortType = 'room'; sortReverse = !sortReverse">
+                                <div>Комната</div>
+                                <div class="sort-tool" ng-class="{'sort-tool_active': sortType == 'room', 'sort-tool_up': sortReverse, 'sort-tool_down': !sortReverse}" ng-class="{'sort-tool_up': sortType == 'name'}"></div>
+                            </th>
+                            <th class="data-table__cell data-table__cell_head" ng-click="sortType = 'phone'; sortReverse = !sortReverse">
+                                <div>Телефон</div>
+                                <div class="sort-tool" ng-class="{'sort-tool_active': sortType == 'phone', 'sort-tool_up': sortReverse, 'sort-tool_down': !sortReverse}" ng-class="{'sort-tool_up': sortType == 'name'}"></div>
+                            </th>
+                            <th class="data-table__cell data-table__cell_head" ng-click="sortType = 'address'; sortReverse = !sortReverse">
+                                <div>Офис</div>
+                                <div class="sort-tool" ng-class="{'sort-tool_active': sortType == 'address', 'sort-tool_up': sortReverse, 'sort-tool_down': !sortReverse}" ng-class="{'sort-tool_up': sortType == 'name'}"></div>
+                            </th>
+                            <th class="data-table__cell data-table__cell_head" ng-click="sortType = 'email'; sortReverse = !sortReverse">
+                                <div>Email</div>
+                                <div class="sort-tool" ng-class="{'sort-tool_active': sortType == 'email', 'sort-tool_up': sortReverse, 'sort-tool_down': !sortReverse}" ng-class="{'sort-tool_up': sortType == 'name'}"></div>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!-- END grid__head -->
+        <div class="data-grid__body">
+            <table class="data-table">
+                <colgroup>
+                    <col style="width: 60px">
+                    <col style="">
+                    <col style="width: 120px">
+                    <col style="">
+                    <col style="">
+                    <col style="">
+                </colgroup>
+                <tbody class="data-table__body">
+                    <tr class="data-table__row" ng-cloak ng-repeat="user in users | orderBy:sortType:sortReverse | filter: search">
+                        <td class="data-table__cell">{{$index + 1}}</td>
+                        <td class="data-table__cell"><span ng-bind-html="user.name | highlight:search"></span></td>
+                        <td class="data-table__cell data-table__cell_align_center">
+                            <img class="data-grid__img" ng-src="{{user.avatar}}" alt="{{user.name}}" title="{{user.name}}">
+                        </td>
+                        <td class="data-table__cell"><span ng-bind-html="user.room | highlight:search"></span></td>
+                        <td class="data-table__cell"><span ng-bind-html="user.phone | highlight:search"></span></td>
+                        <td class="data-table__cell"><span ng-bind-html="user.address | highlight:search"></span></td>
+                        <td class="data-table__cell"><a class="text-link" href="mailto: {{user.email}}" ng-bind-html="user.email | highlight:search"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--END data-grid-->
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.5.5/angular-route.min.js"></script>
+<script src="https://code.angularjs.org/1.5.5/angular-sanitize.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+<script src="app/app.js"></script>
+<script src="app/usersCtrl.js"></script>
+
+</body>
+</html>

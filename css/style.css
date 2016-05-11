@@ -1,0 +1,199 @@
+:root {
+  font: 14px/1.5 sans-serif;
+  color: #585858;
+  background: #F7F9FC;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 1.5em;
+  min-height: 100%;
+}
+
+.app-view {
+  height: 100%;
+}
+
+.data-grid {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-height: 100%;
+  border: 1px solid #d8d8d8;
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(195, 195, 195, 0.5);
+}
+
+  .data-grid__head {
+    position: relative;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    border-bottom: inherit;
+    box-shadow: 0 0 8px rgba(53, 53, 53, 0.22);
+  }
+
+  .data-grid__body {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    overflow-x: auto;
+    overflow-y: scroll;
+  }
+
+ .data-grid__scroll {
+   margin-right: 17px;
+   overflow: hidden;
+ }
+
+.data-grid__search {
+  padding: 1em 1.5em;
+}
+
+.data-grid__count {
+  padding: .25em 1.5em 1em;
+  color: #787878;
+}
+
+.data-grid__img {
+  max-width: 100%;
+  width:  48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+  .data-table__cell {
+    position: relative;
+    padding: 1em 1.5em;
+    font-weight: normal;
+    text-align: left;
+  }
+
+    .data-table__cell_head {
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #757575;
+      cursor: pointer;
+      -webkit-transition: .2s;
+      transition: .2s;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+    }
+
+      .data-table__cell_head:hover {
+        background: rgba(85, 168, 253, 0.11);
+      }
+
+    .data-table__cell_align_center {
+      text-align: center;
+    }
+
+  .data-table__head {}
+
+  .data-table__body {}
+
+    .data-table__body .data-table__row {
+      border-bottom: 1px solid #d8d8d8;
+      -webkit-transition: .2s;
+      transition: .2s;
+    }
+
+    .data-table__body .data-table__row:nth-child(odd) {
+      background: #F7F9FC;
+    }
+
+    .data-table__body .data-table__row:hover {
+      background: rgba(85, 168, 253, 0.11)
+    }
+
+.sort-tool {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  opacity: 0;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+    .sort-tool:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 24px;
+      height: 24px;
+      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTcuNDEsMTUuNDFMMTIsMTAuODNMMTYuNTksMTUuNDFMMTgsMTRMMTIsOEw2LDE0TDcuNDEsMTUuNDFaIiAvPjwvc3ZnPg==);
+      background-size: 100% 100%;
+    }
+
+  .sort-tool_active {
+    opacity: .6;
+  }
+
+  .sort-tool_up {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  .sort-tool_down {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+
+
+.search {}
+
+  .search__input {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    height: 32px;
+    padding: 0 .75em;
+    border: 1px solid #d8d8d8;
+    color: inherit;
+  }
+
+    .search__input:focus {
+      outline: 0;
+      border-color: #55A8FD;
+    }
+
+.highlight {
+  background: #FFEB3B;
+}
+
+.text-link {
+  color: #2196F3;
+}
+
+  .text-link:hover {
+    text-decoration: none;
+  }
