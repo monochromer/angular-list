@@ -1,7 +1,7 @@
 :root {
   font: 14px/1.5 sans-serif;
   color: #585858;
-  background: #F7F9FC;
+  background: #f7f9fc;
 }
 
 html,
@@ -15,11 +15,11 @@ body {
 }
 
 .highlight {
-  background: #FFEB3B;
+  background: #ffeb3b;
 }
 
 .text-link {
-  color: #2196F3;
+  color: #2196f3;
 }
 
   .text-link:hover {
@@ -37,7 +37,8 @@ body {
 
   .input:focus {
     outline: 0;
-    border-color: #55A8FD;
+    border-color: #55a8fd;
+    box-shadow: 0 0 0 1px #55a8fd;
   }
 
 
@@ -204,6 +205,7 @@ body {
 
     .data-table__cell_head {
       padding-right: 40px;
+      line-height: 1;
       letter-spacing: 0.025em;
       text-transform: uppercase;
       font-weight: bold;
@@ -371,6 +373,7 @@ body {
   .btn:focus {
     outline: 0;
     border-color: #55a8fd;
+    box-shadow: 0 0 0 1px #55a8fd;
   }
 
   .btn:active {
@@ -422,12 +425,6 @@ body {
     width: 480px;
     display: inline-block;
     vertical-align: middle;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
     white-space: normal;
     text-align: left;
     font-size: 14px;
@@ -449,13 +446,15 @@ body {
   .modal__body,
   .modal__footer {
     padding: 1em;
-    -webkit-flex: 0 0 auto;
-        -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
   }
 
   .modal__header {
+    margin: -1px -1px 0;
     border-bottom: inherit;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    color: #fff;
+    background: #55a8fd;
   }
 
   .modal__title {
@@ -463,13 +462,14 @@ body {
     padding: 0;
     font-size: 18px;
     font-weight: bold;
-    color: #646464;
   }
 
   .modal__footer {
-    margin-top: auto;
     border-top: inherit;
     text-align: right;
+    background: #f7f9fc;
+    border-bottom-left-radius: talrit;
+    border-bottom-right-radius: inherit;
   }
 
     .modal__footer .btn {
