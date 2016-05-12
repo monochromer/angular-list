@@ -104,6 +104,55 @@
 
     $scope.sortType = 'name';
     $scope.sortReverse = false;
+
+    $scope.activeUser = null;
+    $scope.toggleActiveUser = function(user) {
+      if ($scope.activeUser === user) {
+        $scope.activeUser = null;
+      } else {
+        $scope.activeUser = user;
+      }
+    }
+
+    $scope.showModal = false;
+    var tempUser = {};
+
+    $scope.composeNewUser = function() {
+      $scope.newUser = {};
+    }
+
+    $scope.createUser = function() {
+      $scope.newUser.id = $scope.users.length + 1;
+      $scope.users.push($scope.newUser);
+      $scope.newUser = null;
+    };
+
+    $scope.deleteUser = function(user) {
+      var index = $scope.users.indexOf(user);
+      $scope.users.splice(index, 1);
+    };
+
+    $scope.editUser = function(user) {
+      $scope.showModal = true;
+      tempUser = angular.copy(user);
+    }
+
+    $scope.saveUser = function(event) {
+      event.preventDefault();
+      $scope.showModal = false;
+      $scope.activeUser = null;
+    }
+
+     $scope.resetUser = function(event) {
+      event.preventDefault();
+      var index = $scope.users.indexOf($scope.activeUser);
+      $scope.users[index] = angular.copy(tempUser);
+      $scope.showModal = false;
+      $scope.activeUser = null;
+      $scope.newUser = null;
+      tempUser = {};
+    }
+
   };
 
 })();
