@@ -1,0 +1,1 @@
+[Посмотреть демо](https://monochromer.github.io/angular-list/)
