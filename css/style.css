@@ -94,7 +94,7 @@ body {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-height: 100%;
+  height: 100%;
   border: 1px solid #d8d8d8;
   background: #fff;
   box-shadow: 0 3px 6px rgba(195, 195, 195, 0.5);
@@ -103,16 +103,16 @@ body {
   .data-grid__head {
     position: relative;
     -webkit-flex: 0 0 auto;
-    -ms-flex: 0 0 auto;
-        flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
     border-bottom: inherit;
     box-shadow: 0 0 8px rgba(53, 53, 53, 0.22);
   }
 
   .data-grid__body {
     -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
-        flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
     overflow-x: auto;
     overflow-y: scroll;
   }
@@ -124,6 +124,11 @@ body {
 
 .data-grid__search {
   padding: 1em 1.5em;
+}
+
+.data-grid__title {
+  margin: 0;
+  padding: .5em 1em 0;
 }
 
 .data-grid__toolbar {

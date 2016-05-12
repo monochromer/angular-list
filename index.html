@@ -14,6 +14,8 @@
         <div class="data-grid">
             <!-- BEGIN grid__head -->
             <div class="data-grid__head">
+                <h2 class="data-grid__title">Список сотрудников</h2>
+
                 <div class="data-grid__search search">
                     <input class="search__input input" type="text" placeholder="Поиск сотрудников" ng-model="search">
                 </div>
@@ -229,7 +231,7 @@
             </div>
 
             <div class="modal__footer">
-                <button class="btn btn_act" type="submit" ng-click="createUser()">
+                <button class="btn btn_act" type="submit" ng-click="saveUser()">
                     <svg class="btn__icon" viewBox="0 0 24 24">
                         <path d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" />
                     </svg>
