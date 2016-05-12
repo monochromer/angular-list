@@ -119,6 +119,7 @@
 
     $scope.composeNewUser = function() {
       $scope.newUser = {};
+      $scope.showModal = true;
     }
 
     $scope.createUser = function() {
@@ -130,6 +131,7 @@
     $scope.deleteUser = function(user) {
       var index = $scope.users.indexOf(user);
       $scope.users.splice(index, 1);
+      $scope.activeUser = null;
     };
 
     $scope.editUser = function(user) {

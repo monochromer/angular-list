@@ -82,6 +82,11 @@ body {
   min-height: 100%;
 }
 
+  .app-page_show-modal .app-view {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+  }
+
 .data-grid {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -123,15 +128,25 @@ body {
 
 .data-grid__toolbar {
   padding: .25em 1.5em 1em;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .data-grid__tools {
   margin-left: auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
   .tool-divider {
@@ -211,6 +226,7 @@ body {
     .data-table__body .data-table__row {
       border-bottom: 1px solid #d8d8d8;
       transition: .2s;
+      cursor: pointer;
     }
 
     .data-table__body .data-table__row:nth-child(odd) {
@@ -236,6 +252,7 @@ body {
 
 .data-table__cell_img {
   width: 100px;
+  padding-right: 1.5em;
 }
 
 .data-table__cell_name {}
@@ -333,7 +350,9 @@ body {
     width:  16px;
     height: 16px;
     fill: currentColor;
-    transform: translateX(0);
+    -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+            transform: translateX(0);
   }
 
     .btn__icon + .btn__text {
@@ -398,8 +417,12 @@ body {
     width: 480px;
     display: inline-block;
     vertical-align: middle;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
     display: inline-flex;
-    flex-direction: column;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
     white-space: normal;
     text-align: left;
     font-size: 14px;
@@ -408,9 +431,12 @@ body {
     border: 1px solid #d8d8d8;
     background: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
-    animation-duration: .4s;
-    animation-fill-mode: both;
-    animation-name: hideModal;
+    -webkit-animation-duration: .4s;
+            animation-duration: .4s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-animation-name: hideModal;
+            animation-name: hideModal;
     cursor: default;
   }
 
@@ -418,7 +444,9 @@ body {
   .modal__body,
   .modal__footer {
     padding: 1em;
-    flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
   }
 
   .modal__header {
@@ -444,7 +472,9 @@ body {
     }
 
   .modal_body {
-    flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
   }
 
   .modal_show {
@@ -453,21 +483,44 @@ body {
   }
 
     .modal_show .modal__content {
-      animation-name: showModal;
+      -webkit-animation-name: showModal;
+              animation-name: showModal;
+    }
+
+    @-webkit-keyframes hideModal {
+      to {
+        -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+      }
     }
 
     @keyframes hideModal {
       to {
-        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+      }
+    }
+
+    @-webkit-keyframes showModal {
+      from {
+        -webkit-transform: scale(0.8);
+                transform: scale(0.8);
+      }
+
+      to {
+        -webkit-transform: scale(1);
+                transform: scale(1);
       }
     }
 
     @keyframes showModal {
       from {
-        transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+                transform: scale(0.8);
       }
 
       to {
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
       }
     }

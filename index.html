@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="img/favicon.ico">
     <title>Сотрудники компании</title>
 </head>
-<body class="app-page" ng-controller="usersCtrl">
+<body class="app-page" ng-controller="usersCtrl" ng-class="{'app-page_show-modal': showModal}">
 
     <div class="app-view">
         <!--BEGIN data-grid-->
@@ -141,8 +141,8 @@
 
     <!-- Для редактирования данных сотрудника -->
     <!-- BEGIN modal  -->
-    <div class="modal" ng-class="{'modal_show': activeUser && showModal}">
-        <form class="modal__content" novalidate name="person">
+    <div class="modal" ng-class="{'modal_show': activeUser && showModal}" ng-click="showModal = !showModal">
+        <form class="modal__content" novalidate name="person" ng-click="$event.stopPropagation()">
             <div class="modal__header">
                 <h2 class="modal__title">Данные о сотруднике</h2>
             </div>
@@ -193,8 +193,8 @@
 
      <!-- Для создания сотрудника -->
     <!-- BEGIN modal  -->
-    <div class="modal" ng-class="{'modal_show': newUser}">
-        <form class="modal__content" novalidate name="person">
+    <div class="modal" ng-class="{'modal_show': newUser && showModal}" ng-click="showModal = !showModal">
+        <form class="modal__content" novalidate name="person" ng-click="$event.stopPropagation()">
             <div class="modal__header">
                 <h2 class="modal__title">Данные о сотруднике</h2>
             </div>
