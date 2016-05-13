@@ -11,15 +11,18 @@
     // .service('firebaseRef', function(restURL) {
     //   return new Firebase(restURL)
     // })
-    .config(RouteConfig);
+    .config(RouteConfig)
+    .config(function($sceProvider) {
+      $sceProvider.enabled(false);
+    });
 
 
     RouteConfig.$inject = ['$routeProvider', '$locationProvider'];
 
     function RouteConfig($routeProvider, $locationProvider) {
-      // $routeProvider.otherwise({
-      //   redirectTo: '/'
-      // });
+      $routeProvider.otherwise({
+        redirectTo: '/'
+      });
 
       $locationProvider.html5Mode({
         enabled: true,

@@ -24,88 +24,92 @@
   };
 
 
-  usersCtrl.$inject = ['$scope'];
+  usersCtrl.$inject = ['$scope', 'users'];
 
-  function usersCtrl($scope) {
-    $scope.users = [
-        {
-          "id": "1",
-          "name": "Porter Casey",
-          "email": "portercasey@pulze.com",
-          "phone": "+1 (951) 578-3972",
-          "address": "Concho",
-          "room": 210,
-          "avatar": "https://randomuser.me/api/portraits/men/1.jpg"
-        },
-        {
-          "id": "2",
-          "name": "Patterson Lopez",
-          "email": "pattersonlopez@pulze.com",
-          "phone": "+1 (920) 444-3736",
-          "address": "Winfred",
-          "room": 100,
-          "avatar": "https://randomuser.me/api/portraits/men/2.jpg"
-        },
-        {
-          "id": "2",
-          "name": "Bethany Douglas",
-          "email": "bethanydouglas@pulze.com",
-          "phone": "+1 (900) 580-2888",
-          "address": "Slovan",
-          "room": 203,
-          "avatar": "https://randomuser.me/api/portraits/women/3.jpg"
-        },
-        {
-          "id": "3",
-          "name": "Gayle Bullock",
-          "email": "gaylebullock@pulze.com",
-          "phone": "+1 (906) 577-3764",
-          "address": "Kennedyville",
-          "room": 201,
-          "avatar": "https://randomuser.me/api/portraits/women/4.jpg"
-        },
-        {
-          "id": "4",
-          "name": "Tonya Vance",
-          "email": "tonyavance@pulze.com",
-          "phone": "+1 (839) 526-2184",
-          "address": "Osmond",
-          "room": 302,
-          "avatar": "https://randomuser.me/api/portraits/women/5.jpg"
-        },
-        {
-          "id": "5",
-          "name": "Lori Trujillo",
-          "email": "loritrujillo@pulze.com",
-          "phone": "+1 (943) 530-3073",
-          "address": "Delshire",
-          "room": 120,
-          "avatar": "https://randomuser.me/api/portraits/women/6.jpg"
-        },
-        {
-          "id": "6",
-          "name": "Alba Castro",
-          "email": "albacastro@pulze.com",
-          "phone": "+1 (873) 421-3074",
-          "address": "Carlos",
-          "room": 108,
-          "avatar": "https://randomuser.me/api/portraits/women/7.jpg"
-        },
-        {
-          "id": "7",
-          "name": "Goff Mcfadden",
-          "email": "goffmcfadden@pulze.com",
-          "phone": "+1 (800) 529-3138",
-          "address": "Kidder",
-          "room": 108,
-          "avatar": "https://randomuser.me/api/portraits/men/8.jpg"
-        }
-    ];
+  function usersCtrl($scope, users) {
+    // $scope.users = [
+    //     {
+    //       "id": "1",
+    //       "name": "Porter Casey",
+    //       "email": "portercasey@pulze.com",
+    //       "phone": "+1 (951) 578-3972",
+    //       "address": "Concho",
+    //       "room": 210,
+    //       "avatar": "https://randomuser.me/api/portraits/men/1.jpg"
+    //     },
+    //     {
+    //       "id": "2",
+    //       "name": "Patterson Lopez",
+    //       "email": "pattersonlopez@pulze.com",
+    //       "phone": "+1 (920) 444-3736",
+    //       "address": "Winfred",
+    //       "room": 100,
+    //       "avatar": "https://randomuser.me/api/portraits/men/2.jpg"
+    //     },
+    //     {
+    //       "id": "2",
+    //       "name": "Bethany Douglas",
+    //       "email": "bethanydouglas@pulze.com",
+    //       "phone": "+1 (900) 580-2888",
+    //       "address": "Slovan",
+    //       "room": 203,
+    //       "avatar": "https://randomuser.me/api/portraits/women/3.jpg"
+    //     },
+    //     {
+    //       "id": "3",
+    //       "name": "Gayle Bullock",
+    //       "email": "gaylebullock@pulze.com",
+    //       "phone": "+1 (906) 577-3764",
+    //       "address": "Kennedyville",
+    //       "room": 201,
+    //       "avatar": "https://randomuser.me/api/portraits/women/4.jpg"
+    //     },
+    //     {
+    //       "id": "4",
+    //       "name": "Tonya Vance",
+    //       "email": "tonyavance@pulze.com",
+    //       "phone": "+1 (839) 526-2184",
+    //       "address": "Osmond",
+    //       "room": 302,
+    //       "avatar": "https://randomuser.me/api/portraits/women/5.jpg"
+    //     },
+    //     {
+    //       "id": "5",
+    //       "name": "Lori Trujillo",
+    //       "email": "loritrujillo@pulze.com",
+    //       "phone": "+1 (943) 530-3073",
+    //       "address": "Delshire",
+    //       "room": 120,
+    //       "avatar": "https://randomuser.me/api/portraits/women/6.jpg"
+    //     },
+    //     {
+    //       "id": "6",
+    //       "name": "Alba Castro",
+    //       "email": "albacastro@pulze.com",
+    //       "phone": "+1 (873) 421-3074",
+    //       "address": "Carlos",
+    //       "room": 108,
+    //       "avatar": "https://randomuser.me/api/portraits/women/7.jpg"
+    //     },
+    //     {
+    //       "id": "7",
+    //       "name": "Goff Mcfadden",
+    //       "email": "goffmcfadden@pulze.com",
+    //       "phone": "+1 (800) 529-3138",
+    //       "address": "Kidder",
+    //       "room": 108,
+    //       "avatar": "https://randomuser.me/api/portraits/men/8.jpg"
+    //     }
+    // ];
+    users.findAll().then(function(users) {
+      $scope.users = users;
+    });
 
     $scope.sortType = 'name';
     $scope.sortReverse = false;
 
     $scope.activeUser = null;
+
     $scope.toggleActiveUser = function(user) {
       if ($scope.activeUser === user) {
         $scope.activeUser = null;
@@ -118,18 +122,26 @@
     var tempUser = {};
 
     $scope.composeNewUser = function() {
+      $scope.activeUser = null;
       $scope.newUser = {};
       $scope.showModal = true;
     }
 
     $scope.createUser = function() {
-      $scope.newUser.id = $scope.users.length + 1;
-      $scope.users.push($scope.newUser);
-      $scope.newUser = null;
+      var newUser;
+      newUser = users.createEmpty();
+      angular.extend(newUser, $scope.newUser);
+      // newUser.id = $scope.users.length + 1;
+      newUser.create().then(function() {
+        $scope.users.push(newUser);
+        $scope.newUser = null;
+        $scope.showModal = false;
+      });
     };
 
     $scope.deleteUser = function(user) {
       var index = $scope.users.indexOf(user);
+      user.delete();
       $scope.users.splice(index, 1);
       $scope.activeUser = null;
     };
@@ -141,8 +153,10 @@
 
     $scope.saveUser = function(event) {
       event.preventDefault();
-      $scope.showModal = false;
-      $scope.activeUser = null;
+      $scope.activeUser.update().then(function() {
+        $scope.showModal = false;
+        $scope.activeUser = null;
+      });
     }
 
      $scope.resetUser = function(event) {

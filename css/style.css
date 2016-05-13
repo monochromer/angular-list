@@ -81,6 +81,8 @@ body {
   padding: 2em;
   height: 100%;
   min-height: 100%;
+  will-change: -webkit-filter;
+  will-change: filter;
 }
 
   .app-page_show-modal .app-view {
@@ -95,6 +97,7 @@ body {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  overflow: hidden;
   height: 100%;
   border: 1px solid #d8d8d8;
   background: #fff;
@@ -133,7 +136,7 @@ body {
 }
 
 .data-grid__toolbar {
-  padding: .25em 1.5em 1em;
+  padding: .25em 1.5em 1.25em;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -468,7 +471,7 @@ body {
     border-top: inherit;
     text-align: right;
     background: #f7f9fc;
-    border-bottom-left-radius: talrit;
+    border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
   }
 
@@ -529,3 +532,31 @@ body {
                 transform: scale(1);
       }
     }
+
+    /* модальное окно в состоянии обработки*/
+    .modal_process {}
+
+      .modal_process .modal__footer {
+        position: relative;
+      }
+
+        .modal_process .modal__footer:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 1em;
+          margin: auto;
+          width:  2em;
+          height: 2em;
+          border: 2px solid;
+          border-color: #55a8fd #55a8fd rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2);
+          border-radius: 50%;
+          animation: dataprocess .7s infinite linear;
+        }
+
+        @keyframes dataprocess {
+          to {
+            transform: rotate(1turn);
+          }
+        }
