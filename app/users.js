@@ -29,7 +29,7 @@
       };
 
       UserModel.prototype.delete = function () {
-        $http
+        return $http
           .delete(apiURL + this[keyField] + '.json')
           .success(function(data) {
             // Как-нибудь обрабатываем успешный запрос
