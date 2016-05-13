@@ -33,13 +33,29 @@ body {
   padding: 0 .75em;
   border: 1px solid #d8d8d8;
   color: inherit;
+  background: #fff;
 }
+  .input:-webkit-autofill {
+    background: #fff, none;
+  }
 
   .input:focus {
     outline: 0;
     border-color: #55a8fd;
     box-shadow: 0 0 0 1px #55a8fd;
   }
+
+  .input.ng-dirty.ng-invalid-required {
+    background-color: #fdf4d2;
+  }
+
+  .input.ng-dirty.ng-invalid {
+    border-color: #e24545;
+  }
+
+    .input.ng-dirty.ng-invalid:focus {
+      box-shadow: 0 0 0 1px #e24545;
+    }
 
 
 
@@ -383,6 +399,13 @@ body {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) inset;
   }
 
+  .btn:disabled,
+  .btn[disabled] {
+    opacity: 0.7;
+    pointer-events: none;
+    background: #d8d8d8;
+  }
+
   .btn_act {}
 
     .btn_act:hover {
@@ -533,30 +556,47 @@ body {
       }
     }
 
-    /* модальное окно в состоянии обработки*/
-    .modal_process {}
+/* индикатор ожидания загрузки */
+.loader {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(255, 255, 255, .6);
+  transition: .4s;
+}
 
-      .modal_process .modal__footer {
-        position: relative;
+  .loader:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width:  48px;
+    height: 48px;
+    border: 2px solid;
+    border-color: #55a8fd #55a8fd rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 0 1px transparent;
+  }
+
+  .app-page_loading .loader {
+    opacity: 1;
+    visibility: visible;
+  }
+
+    .app-page_loading .loader:before {
+      animation: loading .75s linear infinite;
+    }
+
+    @keyframes loading {
+      to {
+        transform: rotate(1turn);
       }
-
-        .modal_process .modal__footer:before {
-          content: "";
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 1em;
-          margin: auto;
-          width:  2em;
-          height: 2em;
-          border: 2px solid;
-          border-color: #55a8fd #55a8fd rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2);
-          border-radius: 50%;
-          animation: dataprocess .7s infinite linear;
-        }
-
-        @keyframes dataprocess {
-          to {
-            transform: rotate(1turn);
-          }
-        }
+    }

@@ -143,7 +143,7 @@
     <!-- Для редактирования данных сотрудника -->
     <!-- BEGIN modal  -->
     <div class="modal" ng-class="{'modal_show': activeUser && showModal}" ng-click="showModal = !showModal; activeUser = null;">
-        <form class="modal__content" novalidate name="person" ng-click="$event.stopPropagation()">
+        <form class="modal__content" autocomplete="off" novalidate name="editUserFrom" ng-click="$event.stopPropagation()">
             <div class="modal__header">
                 <h2 class="modal__title">Данные о сотруднике</h2>
             </div>
@@ -152,7 +152,7 @@
                <div class="form-fields">
                     <label class="form-field">
                        <div class="form-field__label">ФИО</div>
-                       <input class="form-field__input input" type="text" name="name" ng-model="activeUser.name">
+                       <input class="form-field__input input" type="text" name="name" required ng-model="activeUser.name">
                    </label>
 
                    <label class="form-field">
@@ -162,17 +162,17 @@
 
                    <label class="form-field">
                        <div class="form-field__label">Email</div>
-                       <input class="form-field__input input" type="email" name="email" ng-model="activeUser.email">
+                       <input class="form-field__input input" type="email" name="email" require ng-model="activeUser.email">
                    </label>
 
                    <label class="form-field form-field_half">
                        <div class="form-field__label">Город</div>
-                       <input class="form-field__input input" type="text" name="address" ng-model="activeUser.address">
+                       <input class="form-field__input input" type="text" name="address" require ng-model="activeUser.address">
                    </label>
 
                    <label class="form-field form-field_half">
                        <div class="form-field__label">Комната</div>
-                       <input class="form-field__input input" type="number" name="room" ng-model="activeUser.room">
+                       <input class="form-field__input input" type="number" name="room" min="1" ng-model="activeUser.room">
                    </label>
 
                    <label class="form-field">
@@ -183,7 +183,7 @@
             </div>
 
             <div class="modal__footer">
-                <button class="btn btn_act" type="submit" ng-click="saveUser($event)">
+                <button class="btn btn_act" type="submit" ng-disabled="editUserFrom.$invalid" ng-click="saveUser($event)">
                     <svg class="btn__icon" viewBox="0 0 24 24">
                         <path d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" />
                     </svg>
@@ -200,7 +200,7 @@
      <!-- Для создания сотрудника -->
     <!-- BEGIN modal  -->
     <div class="modal" ng-class="{'modal_show': newUser && showModal}" ng-click="showModal = !showModal; newUser = null;">
-        <form class="modal__content" novalidate name="person" ng-click="$event.stopPropagation();">
+        <form class="modal__content" novalidate autocomplete="off" name="newUserForm" ng-click="$event.stopPropagation();">
             <div class="modal__header">
                 <h2 class="modal__title">Данные о сотруднике</h2>
             </div>
@@ -209,38 +209,38 @@
                <div class="form-fields">
                     <label class="form-field">
                        <div class="form-field__label">ФИО</div>
-                       <input class="form-field__input input" type="text" name="name" ng-model="newUser.name">
-                   </label>
+                       <input class="form-field__input input" type="text" name="name" required ng-model="newUser.name">
+                    </label>
 
-                   <label class="form-field">
-                       <div class="form-field__label">Телефон</div>
-                       <input class="form-field__input input" type="tel" name="phone" ng-model="newUser.phone">
-                   </label>
+                    <label class="form-field">
+                        <div class="form-field__label">Телефон</div>
+                        <input class="form-field__input input" type="tel" name="phone" ng-model="newUser.phone">
+                    </label>
 
-                   <label class="form-field">
-                       <div class="form-field__label">Email</div>
-                       <input class="form-field__input input" type="email" name="email" ng-model="newUser.email">
-                   </label>
+                    <label class="form-field">
+                        <div class="form-field__label">Email</div>
+                        <input class="form-field__input input" type="email" name="email" required ng-model="newUser.email">
+                    </label>
 
-                   <label class="form-field form-field_half">
-                       <div class="form-field__label">Город</div>
-                       <input class="form-field__input input" type="text" name="address" ng-model="newUser.address">
-                   </label>
+                    <label class="form-field form-field_half">
+                        <div class="form-field__label">Город</div>
+                        <input class="form-field__input input" type="text" name="address" required ng-model="newUser.address">
+                    </label>
 
-                   <label class="form-field form-field_half">
-                       <div class="form-field__label">Комната</div>
-                       <input class="form-field__input input" type="number" name="room" ng-model="newUser.room">
-                   </label>
+                    <label class="form-field form-field_half">
+                        <div class="form-field__label">Комната</div>
+                        <input class="form-field__input input" type="number" name="room" min="1" ng-model="newUser.room">
+                    </label>
 
-                   <label class="form-field">
-                       <div class="form-field__label">Ссылка на фото</div>
-                       <input class="form-field__input input" type="url" name="avatar" ng-model="newUser.avatar">
-                   </label>
+                    <label class="form-field">
+                        <div class="form-field__label">Ссылка на фото</div>
+                        <input class="form-field__input input" type="url" name="avatar" ng-model="newUser.avatar">
+                    </label>
                </div>
             </div>
 
             <div class="modal__footer">
-                <button class="btn btn_act" type="submit" ng-click="createUser()">
+                <button class="btn btn_act" type="submit" ng-disabled="newUserForm.$invalid" ng-click="createUser()">
                     <svg class="btn__icon" viewBox="0 0 24 24">
                         <path d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" />
                     </svg>
@@ -254,28 +254,32 @@
     </div>
     <!-- END modal -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-<script src="https://code.angularjs.org/1.5.5/angular-route.min.js"></script>
-<script src="https://code.angularjs.org/1.5.5/angular-sanitize.min.js"></script>
-<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+    <!-- индикатор ожидания загрузки -->
+    <div class="loader"></div>
 
-<script src="app/app.js"></script>
-<script src="app/users.js"></script>
-<script src="app/usersCtrl.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.5/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.5/angular-sanitize.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 
-<script>
-    (function() {
-        var grid = document.querySelector('.data-grid');
-        var head = grid.querySelector('.data-grid__scroll');
-        var body = grid.querySelector('.data-grid__body');
+    <script src="app/app.js"></script>
+    <script src="app/users.js"></script>
+    <script src="app/usersCtrl.js"></script>
+    <script src="app/loader.js"></script>
 
-        body.onscroll = function() {
-            var scroll = this.scrollLeft;
-            head.style.transform = 'translateX(' + -scroll +'px)';
-        };
-    })();
-</script>
+    <script>
+        (function() {
+            var grid = document.querySelector('.data-grid');
+            var head = grid.querySelector('.data-grid__scroll');
+            var body = grid.querySelector('.data-grid__body');
+
+            body.onscroll = function() {
+                var scroll = this.scrollLeft;
+                head.style.transform = 'translateX(' + -scroll +'px)';
+            };
+        })();
+    </script>
 
 </body>
 </html>

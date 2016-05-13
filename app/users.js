@@ -75,7 +75,6 @@
               });
               users.push(u);
             });
-            console.log(users);
             deferred.resolve(users);
           }).error(function() {
             deferred.reject();

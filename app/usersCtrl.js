@@ -24,9 +24,9 @@
   };
 
 
-  usersCtrl.$inject = ['$scope', 'users'];
+  usersCtrl.$inject = ['$scope', 'users', 'loader'];
 
-  function usersCtrl($scope, users) {
+  function usersCtrl($scope, users, loader) {
     // $scope.users = [
     //     {
     //       "id": "1",
@@ -109,6 +109,8 @@
     $scope.sortReverse = false;
 
     $scope.activeUser = null;
+    $scope.showModal = false;
+    var tempUser = {};
 
     $scope.toggleActiveUser = function(user) {
       if ($scope.activeUser === user) {
@@ -117,9 +119,6 @@
         $scope.activeUser = user;
       }
     }
-
-    $scope.showModal = false;
-    var tempUser = {};
 
     $scope.composeNewUser = function() {
       $scope.activeUser = null;
@@ -132,18 +131,23 @@
       newUser = users.createEmpty();
       angular.extend(newUser, $scope.newUser);
       // newUser.id = $scope.users.length + 1;
+      loader.show();
       newUser.create().then(function() {
         $scope.users.push(newUser);
         $scope.newUser = null;
         $scope.showModal = false;
+        loader.hide();
       });
     };
 
     $scope.deleteUser = function(user) {
       var index = $scope.users.indexOf(user);
-      user.delete();
-      $scope.users.splice(index, 1);
-      $scope.activeUser = null;
+      loader.show();
+      user.delete().then(function() {
+        $scope.users.splice(index, 1);
+        $scope.activeUser = null;
+        loader.hide();
+      });
     };
 
     $scope.editUser = function(user) {
@@ -153,9 +157,11 @@
 
     $scope.saveUser = function(event) {
       event.preventDefault();
+      loader.show();
       $scope.activeUser.update().then(function() {
         $scope.showModal = false;
         $scope.activeUser = null;
+        loader.hide();
       });
     }
 
