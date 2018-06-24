@@ -103,6 +103,8 @@
     // ];
     users.findAll().then(function(users) {
       $scope.users = users;
+    }).catch(function(e) {
+      console.error('Error while loading users', e)
     });
 
     $scope.sortType = 'name';
